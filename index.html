@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>l’aasfour العصفور | مطعم فمكناس - أكل طري وأثمنة مزيانة</title>
+<meta name="description" content="l’aasfour العصفور مطعم فمكناس: شوف المنتجات والأثمنة وطلب مباشرة عبر واتساب.">
+<link rel="canonical" href="https://05012007.github.io/L-aasfour/">
+<meta name="theme-color" content="#14403a">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E🐦%3C/text%3E%3C/svg%3E">
+
+<!-- Google Search Console : collez ici la balise de vérification, exemple :
+<meta name="google-site-verification" content="XXXXXXXX"> -->
+
+<!-- Aperçu WhatsApp / Facebook -->
+<meta property="og:type" content="website">
+<meta property="og:title" content="l’aasfour العصفور - مطعم فمكناس">
+<meta property="og:description" content="شوف المنتجات والأثمنة وطلب عبر واتساب.">
+<meta property="og:url" content="https://05012007.github.io/L-aasfour/">
+<meta property="og:locale" content="ar_MA">
+
+<!-- Google : données structurées (changez le téléphone et l'adresse) -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Restaurant",
+  "name": "l’aasfour العصفور",
+  "url": "https://05012007.github.io/L-aasfour/",
+  "telephone": "+212600000000",
+  "servesCuisine": "Moroccan",
+  "address": { "@type": "PostalAddress", "streetAddress": "ADRESSE ICI", "addressLocality": "Meknès", "addressRegion": "Fès-Meknès", "addressCountry": "MA" },
+  "openingHours": "Mo-Su 08:00-22:00"
+}
+</script>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Lalezar&family=Tajawal:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+:root{--green:#14403a;--green2:#1d5a51;--gold:#f2b632;--chalk:#fbfaf5;--ink:#1e1b16;--muted:#6b675e;--line:#e6e2d6;--red:#b3261e}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:'Tajawal',Arial,sans-serif;background:var(--chalk);color:var(--ink);line-height:1.6}
+img{max-width:100%;display:block}
+button{font-family:inherit}
+
+.hero{background:var(--green);color:#fff;padding:28px 20px 70px;position:relative;overflow:hidden;text-align:center}
+.hero::after{content:"";position:absolute;left:-10%;right:-10%;bottom:-40px;height:80px;background:var(--chalk);border-radius:50% 50% 0 0}
+.logo{width:74px;height:74px;margin:0 auto 6px}
+.brand{font-family:'Lalezar',sans-serif;font-weight:400;font-size:clamp(3rem,15vw,5.5rem);line-height:1.1;direction:ltr}
+.brand span{color:var(--gold)}
+.brand-ar{font-family:'Lalezar',sans-serif;font-size:1.6rem;color:var(--gold);margin-top:-4px}
+.tagline{max-width:420px;margin:12px auto 22px;color:#d6e6e2;font-size:1.05rem}
+.btn{display:inline-block;border:0;cursor:pointer;background:var(--gold);color:var(--ink);font:700 1rem 'Tajawal',sans-serif;padding:12px 26px;border-radius:50px;text-decoration:none}
+
+.wrap{max-width:1050px;margin:0 auto;padding:0 16px}
+.about{color:var(--muted);margin-bottom:10px;max-width:640px}
+h2{font-family:'Lalezar',sans-serif;font-weight:400;font-size:2rem;color:var(--green);margin:8px 0 10px}
+.filters{display:flex;gap:8px;overflow-x:auto;padding:6px 2px 14px;scrollbar-width:none}
+.filters::-webkit-scrollbar{display:none}
+.chip{flex:none;border:1.5px solid var(--green);background:transparent;color:var(--green);font:700 .95rem 'Tajawal',sans-serif;padding:7px 18px;border-radius:50px;cursor:pointer}
+.chip.on{background:var(--green);color:#fff}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:18px;padding-bottom:40px}
+.card{background:#fff;border:1px solid var(--line);border-radius:18px;overflow:hidden;display:flex;flex-direction:column}
+.pic{aspect-ratio:4/3;background:#efece0;display:flex;align-items:center;justify-content:center;font-size:4rem;overflow:hidden}
+.pic img{width:100%;height:100%;object-fit:cover}
+.body{padding:14px 16px 16px;display:flex;flex-direction:column;gap:6px;flex:1}
+.top{display:flex;justify-content:space-between;align-items:baseline;gap:10px}
+.name{font-weight:700;font-size:1.15rem}
+.price{font-family:'Lalezar',sans-serif;font-size:1.35rem;color:var(--green2);white-space:nowrap}
+.price small{font-family:'Tajawal',sans-serif;font-size:.8rem;color:var(--muted)}
+.desc{color:var(--muted);font-size:.95rem;flex:1}
+.order{margin-top:8px;background:var(--green);color:#fff;text-align:center;padding:10px;border-radius:12px;text-decoration:none;font-weight:700}
+.empty{grid-column:1/-1;text-align:center;color:var(--muted);padding:40px 10px}
+
+.adminbar{display:none;position:sticky;top:0;z-index:20;background:var(--gold);padding:10px 14px;gap:8px;flex-wrap:wrap;justify-content:center}
+body.admin .adminbar{display:flex}
+.adminbar button{border:0;border-radius:50px;padding:8px 16px;font-weight:700;cursor:pointer;background:var(--green);color:#fff;font-size:.9rem}
+.adminbar button.out{background:#fff;color:var(--ink)}
+.tools{display:none;gap:8px;margin-top:8px}
+body.admin .tools{display:flex}
+.tools button{flex:1;border:1.5px solid var(--green);background:#fff;color:var(--green);border-radius:10px;padding:7px;font-weight:700;cursor:pointer}
+.tools button.del{border-color:var(--red);color:var(--red)}
+
+.modal{position:fixed;inset:0;background:rgba(20,30,28,.6);display:none;align-items:flex-end;justify-content:center;z-index:50}
+.modal.center{align-items:center;padding:16px}
+.modal.open{display:flex}
+.sheet{background:#fff;width:100%;max-width:520px;max-height:92vh;overflow-y:auto;border-radius:22px 22px 0 0;padding:20px}
+.modal.center .sheet{border-radius:22px}
+.sheet h3{font-family:'Lalezar',sans-serif;font-weight:400;font-size:1.6rem;color:var(--green);margin-bottom:10px}
+.sheet label{display:block;font-weight:700;margin:12px 0 4px}
+.sheet input,.sheet textarea{width:100%;border:1.5px solid var(--line);border-radius:12px;padding:11px;font:1rem 'Tajawal',sans-serif;background:var(--chalk)}
+.sheet textarea{min-height:80px;resize:vertical}
+.preview{margin-top:6px;aspect-ratio:4/3;border-radius:14px;background:#efece0;display:flex;align-items:center;justify-content:center;color:var(--muted);overflow:hidden}
+.preview img{width:100%;height:100%;object-fit:cover}
+.row{display:flex;gap:10px;margin-top:18px}
+.row button{flex:1;border:0;border-radius:12px;padding:13px;font-weight:700;font-size:1rem;cursor:pointer}
+.row button:disabled{opacity:.6;cursor:wait}
+.save{background:var(--green);color:#fff}
+.cancel{background:var(--line);color:var(--ink)}
+.msg{font-size:1.1rem;margin:6px 0}
+.err{color:var(--red);margin-top:6px}
+
+footer{background:var(--green);color:#d6e6e2;padding:30px 20px;text-align:center}
+footer b{color:var(--gold);font-family:'Lalezar',sans-serif;font-size:1.6rem;font-weight:400;direction:ltr;display:block}
+footer a{color:var(--gold)}
+.login{margin-top:14px;background:transparent;border:0;color:#7fa39c;cursor:pointer;font-size:.85rem}
+</style>
+</head>
+<body>
+
+<div class="adminbar">
+  <button onclick="openForm()">➕ زيد منتج</button>
+  <button class="out" onclick="logout()">خروج</button>
+</div>
+
+<header class="hero">
+  <svg class="logo" viewBox="0 0 100 100" aria-hidden="true">
+    <ellipse cx="46" cy="56" rx="30" ry="24" fill="#f2b632"/>
+    <circle cx="68" cy="38" r="15" fill="#f2b632"/>
+    <path d="M82 36 L98 41 L82 45 Z" fill="#fbfaf5"/>
+    <circle cx="71" cy="35" r="2.8" fill="#14403a"/>
+    <path d="M18 54 Q8 44 4 52 Q10 62 22 64 Z" fill="#d99a15"/>
+    <path d="M30 56 Q46 44 58 62 Q42 74 30 56 Z" fill="#d99a15"/>
+    <path d="M42 78 L40 90 M52 78 L54 90" stroke="#fbfaf5" stroke-width="3" stroke-linecap="round"/>
+  </svg>
+  <h1 class="brand">l’<span>aasfour</span></h1>
+  <div class="brand-ar">العصفور</div>
+  <p class="tagline" id="tagline"></p>
+  <a class="btn" href="#menu">شوف المنتجات</a>
+</header>
+
+<main class="wrap" id="menu">
+  <h2>المنتجات ديالنا</h2>
+  <!-- Texte fixe visible par Google (les produits, eux, se chargent après) -->
+  <p class="about">مرحبا بيكم ف l’aasfour العصفور، مطعم فمكناس. شوفو المنتجات والأثمنة وطلبو مباشرة عبر واتساب.</p>
+  <div class="filters" id="filters"></div>
+  <div class="grid" id="grid"><p class="empty">كنحملو المنتجات...</p></div>
+  <noscript><p class="empty">خاصك تفعل JavaScript باش تشوف المنتجات.</p></noscript>
+</main>
+
+<footer>
+  <b>l’aasfour</b>
+  <p id="address"></p>
+  <p id="hours"></p>
+  <p><a id="call" href="#"></a></p>
+  <button class="login" id="loginBtn" onclick="login()">🔐 الإدارة</button>
+</footer>
+
+<!-- Connexion -->
+<div class="modal center" id="loginModal">
+  <div class="sheet">
+    <h3>الإدارة</h3>
+    <label>الإيميل</label>
+    <input id="lEmail" type="email" autocomplete="username" placeholder="email@example.com">
+    <label>كلمة السر</label>
+    <input id="lPw" type="password" autocomplete="current-password">
+    <p class="err" id="lErr"></p>
+    <div class="row">
+      <button class="cancel" onclick="closeLogin()">إلغاء</button>
+      <button class="save" onclick="checkLogin()">دخول</button>
+    </div>
+  </div>
+</div>
+
+<!-- Messages / confirmation -->
+<div class="modal center" id="dlg">
+  <div class="sheet">
+    <p class="msg" id="dlgText"></p>
+    <div class="row">
+      <button class="cancel" id="dlgCancel" onclick="dlgClose(false)">إلغاء</button>
+      <button class="save" onclick="dlgClose(true)">موافق</button>
+    </div>
+  </div>
+</div>
+
+<!-- Produit -->
+<div class="modal" id="modal">
+  <div class="sheet">
+    <h3 id="formTitle">منتج جديد</h3>
+    <label>الصورة</label>
+    <input type="file" id="fImage" accept="image/*">
+    <div class="preview" id="preview">ما كاينة حتى صورة</div>
+    <label>سمية المنتج</label>
+    <input id="fName" placeholder="مثال: بيتزا مارغريتا">
+    <label>الثمن (بالدرهم)</label>
+    <input id="fPrice" type="number" inputmode="decimal" placeholder="مثال: 35">
+    <label>الصنف</label>
+    <input id="fCat" list="catList" placeholder="مثال: بيتزا">
+    <datalist id="catList"></datalist>
+    <label>التفاصيل</label>
+    <textarea id="fDetails" placeholder="شنو كاين ف هاد المنتج؟"></textarea>
+    <div class="row">
+      <button class="cancel" onclick="closeForm()">إلغاء</button>
+      <button class="save" id="saveBtn" onclick="saveProduct()">حفظ</button>
+    </div>
+  </div>
+</div>
+
+<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-auth-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore-compat.js"></script>
+<script>
+/* ===== 1) Réglages du magasin (à modifier) ===== */
+const SHOP = {
+  tagline: "أكل طري وجودة كتفرح.",
+  phone: "212600000000",
+  phoneShow: "06 00 00 00 00",
+  address: "العنوان هنا، مكناس",
+  hours: "كل نهار من 8:00 حتى 22:00",
+  currency: "درهم"
+};
+
+/* ===== 2) Config Firebase (Console Firebase > Paramètres du projet > Vos applications) ===== */
+const firebaseConfig = {
+  apiKey: "PASTE_HERE",
+  authDomain: "PASTE_HERE",
+  projectId: "PASTE_HERE",
+  storageBucket: "PASTE_HERE",
+  messagingSenderId: "PASTE_HERE",
+  appId: "PASTE_HERE"
+};
+
+/* ===== Code ===== */
+const $ = id => document.getElementById(id);
+const esc = s => String(s).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+
+$("tagline").textContent = SHOP.tagline;
+$("address").textContent = SHOP.address;
+$("hours").textContent = SHOP.hours;
+$("call").textContent = "📞 " + SHOP.phoneShow;
+$("call").href = "tel:+" + SHOP.phone;
+
+let products = [], current = "الكل", editId = null, imgData = "", dlgCb = null;
+let db, auth;
+
+/* ----- Messages ----- */
+function ask(text, onOk){
+  $("dlgText").textContent = text;
+  $("dlgCancel").style.display = onOk ? "" : "none";
+  dlgCb = onOk || null;
+  $("dlg").classList.add("open");
+}
+function dlgClose(ok){
+  $("dlg").classList.remove("open");
+  const cb = dlgCb; dlgCb = null;
+  if(ok && cb) cb();
+}
+
+/* Fermer une fenêtre en touchant le fond ou avec Echap */
+document.querySelectorAll(".modal").forEach(m => m.addEventListener("click", e => {
+  if(e.target === m && m.id !== "dlg") m.classList.remove("open");
+}));
+document.addEventListener("keydown", e => {
+  if(e.key === "Escape") document.querySelectorAll(".modal.open").forEach(m => m.classList.remove("open"));
+});
+
+/* ----- Firebase ----- */
+if(typeof firebase === "undefined"){
+  $("grid").innerHTML = '<p class="empty">ما قدرناش نتصلو، تأكد من الإنترنت وعاود.</p>';
+} else if(firebaseConfig.apiKey === "PASTE_HERE"){
+  $("grid").innerHTML = '<p class="empty">خاصك تحط إعدادات Firebase ف الكود.</p>';
+} else {
+  firebase.initializeApp(firebaseConfig);
+  db = firebase.firestore();
+  auth = firebase.auth();
+
+  db.collection("products").orderBy("createdAt").onSnapshot(snap => {
+    products = snap.docs.map(d => ({ id: d.id, ...d.data() }));
+    drawFilters(); drawProducts();
+  }, () => { $("grid").innerHTML = '<p class="empty">وقع مشكل ف تحميل المنتجات.</p>'; });
+
+  auth.onAuthStateChanged(user => {
+    document.body.classList.toggle("admin", !!user);
+    $("loginBtn").style.display = user ? "none" : "";
+    drawProducts();
+  });
+}
+
+/* ----- Affichage ----- */
+function drawFilters(){
+  const cats = ["الكل", ...new Set(products.map(p => p.category).filter(Boolean))];
+  if(!cats.includes(current)) current = "الكل";
+  $("filters").innerHTML = cats.map(c =>
+    `<button class="chip ${c===current?'on':''}" data-c="${esc(c)}">${esc(c)}</button>`).join("");
+  document.querySelectorAll(".chip").forEach(b => b.onclick = () => { current = b.dataset.c; drawFilters(); drawProducts(); });
+  $("catList").innerHTML = cats.slice(1).map(c => `<option value="${esc(c)}">`).join("");
+}
+
+function drawProducts(){
+  const list = products.filter(p => current === "الكل" || p.category === current);
+  if(!list.length){
+    $("grid").innerHTML = `<p class="empty">${document.body.classList.contains('admin')
+      ? 'ما كاين حتى منتج. كليكي على «زيد منتج».'
+      : 'غادي نزيدو المنتجات قريب. تابعونا!'}</p>`;
+    return;
+  }
+  $("grid").innerHTML = list.map(p => {
+    const hasPrice = p.price !== "" && p.price != null;
+    const msg = encodeURIComponent(`السلام، بغيت نطلب: ${p.name}` + (hasPrice ? ` (${p.price} ${SHOP.currency})` : ""));
+    return `<article class="card">
+      <div class="pic">${p.image ? `<img src="${p.image}" alt="${esc(p.name)}" loading="lazy">` : "🍽️"}</div>
+      <div class="body">
+        <div class="top"><h3 class="name">${esc(p.name)}</h3>
+          ${hasPrice ? `<span class="price">${esc(p.price)} <small>${SHOP.currency}</small></span>` : ""}</div>
+        <p class="desc">${esc(p.details || "")}</p>
+        <a class="order" href="https://wa.me/${SHOP.phone}?text=${msg}" target="_blank" rel="noopener">طلب عبر واتساب</a>
+        <div class="tools">
+          <button onclick="openForm('${p.id}')">✏️ تعديل</button>
+          <button class="del" onclick="removeProduct('${p.id}')">🗑️ حيد</button>
+        </div>
+      </div></article>`;
+  }).join("");
+}
+
+/* ----- Connexion admin ----- */
+function login(){
+  $("lPw").value = ""; $("lErr").textContent = "";
+  $("loginModal").classList.add("open");
+  setTimeout(() => $("lEmail").focus(), 100);
+}
+function closeLogin(){ $("loginModal").classList.remove("open"); }
+function checkLogin(){
+  if(!auth){ $("lErr").textContent = "Firebase ماشي مفعل"; return; }
+  $("lErr").textContent = "...";
+  auth.signInWithEmailAndPassword($("lEmail").value.trim(), $("lPw").value)
+    .then(closeLogin)
+    .catch(() => { $("lErr").textContent = "الإيميل أو كلمة السر غالطة"; });
+}
+$("lPw").addEventListener("keydown", e => { if(e.key === "Enter") checkLogin(); });
+function logout(){ if(auth) auth.signOut(); }
+
+/* ----- Formulaire produit ----- */
+function openForm(id){
+  editId = id || null;
+  const p = products.find(x => x.id === id);
+  $("formTitle").textContent = p ? "تعديل المنتج" : "منتج جديد";
+  $("fName").value = p ? p.name : "";
+  $("fPrice").value = p ? p.price : "";
+  $("fCat").value = p ? p.category : "";
+  $("fDetails").value = p ? p.details : "";
+  $("fImage").value = "";
+  imgData = p ? (p.image || "") : "";
+  showPreview();
+  $("modal").classList.add("open");
+}
+function closeForm(){ $("modal").classList.remove("open"); }
+function showPreview(){ $("preview").innerHTML = imgData ? `<img src="${imgData}" alt="">` : "ما كاينة حتى صورة"; }
+
+/* Réduit l'image (max 700px) pour rester sous la limite de Firestore */
+$("fImage").onchange = e => {
+  const file = e.target.files[0]; if(!file) return;
+  const reader = new FileReader();
+  reader.onload = () => {
+    const img = new Image();
+    img.onload = () => {
+      const k = Math.min(1, 700 / Math.max(img.width, img.height));
+      const c = document.createElement("canvas");
+      c.width = img.width * k; c.height = img.height * k;
+      c.getContext("2d").drawImage(img, 0, 0, c.width, c.height);
+      imgData = c.toDataURL("image/jpeg", 0.7);
+      showPreview();
+    };
+    img.src = reader.result;
+  };
+  reader.readAsDataURL(file);
+};
+
+function saveProduct(){
+  if(!db){ ask("Firebase ماشي مفعل"); return; }
+  const name = $("fName").value.trim();
+  if(!name){ ask("كتب سمية المنتج"); return; }
+  const data = {
+    name, image: imgData,
+    price: $("fPrice").value.trim(),
+    category: $("fCat").value.trim(),
+    details: $("fDetails").value.trim()
+  };
+  $("saveBtn").disabled = true;
+  const op = editId
+    ? db.collection("products").doc(editId).update(data)
+    : db.collection("products").add({ ...data, createdAt: Date.now() });
+  op.then(closeForm)
+    .catch(() => ask("ما قدرناش نحفظو. تأكد أنك مسجل الدخول."))
+    .finally(() => { $("saveBtn").disabled = false; });
+}
+
+function removeProduct(id){
+  ask("بصح بغيتي تحيد هاد المنتج؟", () => {
+    db.collection("products").doc(id).delete().catch(() => ask("ما قدرناش نحيدو."));
+  });
+}
+</script>
+</body>
+</html>
