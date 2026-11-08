@@ -9,7 +9,8 @@
 <meta name="theme-color" content="#14403a">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E🐦%3C/text%3E%3C/svg%3E">
 
-<meta name="google-site-verification" content="zHISgYwK-8IFZTxkVn8aM28blkggkiO4ZybCNavq9zs" />
+<!-- Google Search Console : collez ici la balise de vérification, exemple :
+<meta name="google-site-verification" content="XXXXXXXX"> -->
 
 <!-- Aperçu WhatsApp / Facebook -->
 <meta property="og:type" content="website">
@@ -25,9 +26,9 @@
   "@type": "Restaurant",
   "name": "l’aasfour العصفور",
   "url": "https://05012007.github.io/L-aasfour/",
-  "telephone": "+212663555861",
+  "telephone": "+212600000000",
   "servesCuisine": "Moroccan",
-  "address": { "Avenue abdelkrim elkhattabi  meknès": "Fès-Meknès", "MAROC": "MA" },
+  "address": { "@type": "PostalAddress", "streetAddress": "ADRESSE ICI", "addressLocality": "Meknès", "addressRegion": "Fès-Meknès", "addressCountry": "MA" },
   "openingHours": "Mo-Su 08:00-22:00"
 }
 </script>
@@ -263,6 +264,7 @@ if(typeof firebase === "undefined"){
 } else {
   firebase.initializeApp(firebaseConfig);
   db = firebase.firestore();
+  db.settings({ experimentalAutoDetectLongPolling: true });
   auth = firebase.auth();
 
   db.collection("products").orderBy("createdAt").onSnapshot(snap => {
@@ -377,12 +379,16 @@ function saveProduct(){
     details: $("fDetails").value.trim()
   };
   $("saveBtn").disabled = true;
+  const timer = setTimeout(() => {
+    $("saveBtn").disabled = false;
+    ask("الاتصال بطيء أو محجوب. جرب بلا VPN أو بلا مانع الإعلانات وعاود.");
+  }, 20000);
   const op = editId
     ? db.collection("products").doc(editId).update(data)
     : db.collection("products").add({ ...data, createdAt: Date.now() });
   op.then(closeForm)
-    .catch(() => ask("ما قدرناش نحفظو. تأكد أنك مسجل الدخول."))
-    .finally(() => { $("saveBtn").disabled = false; });
+    .catch(e => ask("ما قدرناش نحفظو (" + (e && e.code ? e.code : "error") + ")"))
+    .finally(() => { clearTimeout(timer); $("saveBtn").disabled = false; });
 }
 
 function removeProduct(id){
