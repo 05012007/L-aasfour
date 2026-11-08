@@ -198,10 +198,7 @@ footer a{color:var(--gold)}
   </div>
 </div>
 
-<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js"></script>
-<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-auth-compat.js"></script>
-<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore-compat.js"></script>
-<script>
+<script type="module">
 /* ===== 1) Réglages du magasin (à modifier) ===== */
 const SHOP = {
   tagline: "أكل طري وجودة كتفرح.",
@@ -222,6 +219,10 @@ const firebaseConfig = {
   appId: "1:337221390146:web:f03804b29ef1f1afc302db"
 };
 
+/* Nom de la base Firestore. Dans votre console elle s'appelle "default" (sans parenthèses).
+   Si vous créez une base standard, mettez "(default)". */
+const DB_ID = "default";
+
 /* ===== Code ===== */
 const $ = id => document.getElementById(id);
 const esc = s => String(s).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
@@ -233,7 +234,7 @@ $("call").textContent = "📞 " + SHOP.phoneShow;
 $("call").href = "tel:+" + SHOP.phone;
 
 let products = [], current = "الكل", editId = null, imgData = "", dlgCb = null;
-let db, auth;
+let db, auth, A, F;
 
 /* ----- Messages ----- */
 function ask(text, onOk){
@@ -247,8 +248,6 @@ function dlgClose(ok){
   const cb = dlgCb; dlgCb = null;
   if(ok && cb) cb();
 }
-
-/* Fermer une fenêtre en touchant le fond ou avec Echap */
 document.querySelectorAll(".modal").forEach(m => m.addEventListener("click", e => {
   if(e.target === m && m.id !== "dlg") m.classList.remove("open");
 }));
@@ -256,28 +255,36 @@ document.addEventListener("keydown", e => {
   if(e.key === "Escape") document.querySelectorAll(".modal.open").forEach(m => m.classList.remove("open"));
 });
 
-/* ----- Firebase ----- */
-if(typeof firebase === "undefined"){
-  $("grid").innerHTML = '<p class="empty">ما قدرناش نتصلو، تأكد من الإنترنت وعاود.</p>';
-} else if(firebaseConfig.apiKey === "PASTE_HERE"){
-  $("grid").innerHTML = '<p class="empty">خاصك تحط إعدادات Firebase ف الكود.</p>';
-} else {
-  firebase.initializeApp(firebaseConfig);
-  db = firebase.firestore();
-  db.settings({ experimentalForceLongPolling: true });
-  auth = firebase.auth();
+/* ----- Firebase (SDK modulaire) ----- */
+(async () => {
+  try {
+    const base = "https://www.gstatic.com/firebasejs/10.12.2/";
+    const [appM, authM, fsM] = await Promise.all([
+      import(base + "firebase-app.js"),
+      import(base + "firebase-auth.js"),
+      import(base + "firebase-firestore.js")
+    ]);
+    A = authM; F = fsM;
+    const app = appM.initializeApp(firebaseConfig);
+    auth = A.getAuth(app);
+    db = F.initializeFirestore(app, { experimentalForceLongPolling: true }, DB_ID);
 
-  db.collection("products").orderBy("createdAt").onSnapshot(snap => {
-    products = snap.docs.map(d => ({ id: d.id, ...d.data() }));
-    drawFilters(); drawProducts();
-  }, () => { $("grid").innerHTML = '<p class="empty">وقع مشكل ف تحميل المنتجات.</p>'; });
+    F.onSnapshot(F.query(F.collection(db, "products"), F.orderBy("createdAt")), snap => {
+      products = snap.docs.map(d => ({ id: d.id, ...d.data() }));
+      drawFilters(); drawProducts();
+    }, err => {
+      $("grid").innerHTML = '<p class="empty">وقع مشكل ف تحميل المنتجات (' + esc(err && err.code ? err.code : "error") + ')</p>';
+    });
 
-  auth.onAuthStateChanged(user => {
-    document.body.classList.toggle("admin", !!user);
-    $("loginBtn").style.display = user ? "none" : "";
-    drawProducts();
-  });
-}
+    A.onAuthStateChanged(auth, user => {
+      document.body.classList.toggle("admin", !!user);
+      $("loginBtn").style.display = user ? "none" : "";
+      drawProducts();
+    });
+  } catch (e) {
+    $("grid").innerHTML = '<p class="empty">ما قدرناش نتصلو، تأكد من الإنترنت وعاود.</p>';
+  }
+})();
 
 /* ----- Affichage ----- */
 function drawFilters(){
@@ -325,12 +332,12 @@ function closeLogin(){ $("loginModal").classList.remove("open"); }
 function checkLogin(){
   if(!auth){ $("lErr").textContent = "Firebase ماشي مفعل"; return; }
   $("lErr").textContent = "...";
-  auth.signInWithEmailAndPassword($("lEmail").value.trim(), $("lPw").value)
+  A.signInWithEmailAndPassword(auth, $("lEmail").value.trim(), $("lPw").value)
     .then(closeLogin)
     .catch(() => { $("lErr").textContent = "الإيميل أو كلمة السر غالطة"; });
 }
 $("lPw").addEventListener("keydown", e => { if(e.key === "Enter") checkLogin(); });
-function logout(){ if(auth) auth.signOut(); }
+function logout(){ if(auth) A.signOut(auth); }
 
 /* ----- Formulaire produit ----- */
 function openForm(id){
@@ -384,8 +391,8 @@ function saveProduct(){
     ask("الاتصال بطيء أو محجوب. جرب بلا VPN أو بلا مانع الإعلانات وعاود.");
   }, 20000);
   const op = editId
-    ? db.collection("products").doc(editId).update(data)
-    : db.collection("products").add({ ...data, createdAt: Date.now() });
+    ? F.updateDoc(F.doc(db, "products", editId), data)
+    : F.addDoc(F.collection(db, "products"), { ...data, createdAt: Date.now() });
   op.then(closeForm)
     .catch(e => ask("ما قدرناش نحفظو (" + (e && e.code ? e.code : "error") + ")"))
     .finally(() => { clearTimeout(timer); $("saveBtn").disabled = false; });
@@ -393,9 +400,12 @@ function saveProduct(){
 
 function removeProduct(id){
   ask("بصح بغيتي تحيد هاد المنتج؟", () => {
-    db.collection("products").doc(id).delete().catch(() => ask("ما قدرناش نحيدو."));
+    F.deleteDoc(F.doc(db, "products", id)).catch(e => ask("ما قدرناش نحيدو (" + (e && e.code ? e.code : "error") + ")"));
   });
 }
+
+/* Les boutons du HTML appellent ces fonctions */
+Object.assign(window, { openForm, closeForm, saveProduct, removeProduct, login, closeLogin, checkLogin, logout, dlgClose });
 </script>
 </body>
 </html>
