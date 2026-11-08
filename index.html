@@ -264,7 +264,7 @@ if(typeof firebase === "undefined"){
 } else {
   firebase.initializeApp(firebaseConfig);
   db = firebase.firestore();
-  db.settings({ experimentalAutoDetectLongPolling: true });
+  db.settings({ experimentalForceLongPolling: true });
   auth = firebase.auth();
 
   db.collection("products").orderBy("createdAt").onSnapshot(snap => {
